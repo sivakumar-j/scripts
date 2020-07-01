@@ -1,7 +1,7 @@
 set -vx
 #!/bin/bash
 
-LOG=/tmp/logtestlog.log
+LOG=/tmp/logtestlog.log #need to set a env variable
 seconds=300
 
 for i in $@; do
@@ -29,3 +29,4 @@ sleep $seconds
 done
 
 exit
+
