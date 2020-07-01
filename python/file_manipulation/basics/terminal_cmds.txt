@@ -1,0 +1,91 @@
+cat > friends.txt
+Anand
+Bala
+Chandra
+David
+Edwin
+Farooq
+Gowtham
+
+
+friends_file = open('friends_base.txt', 'r')
+friends_file
+
+//The above output says friends_file belongs to _io.TextIOWrapper class
+friends_file.read()
+
+//Lets read again.Will be empty
+friends_file.read()
+
+
+friends_file.seek(0)
+friends_file.read()
+friends_file.seek(6)
+friends_file.read()
+
+
+//Read file by for loop
+friends_file.seek(0)
+for line in friends_file:
+  print(line, end="")
+
+
+  friends_file.close()
+  friends_file.read()
+
+
+  friends_base = open('friends_base.txt')
+  new_friends = open('new_friends.txt', 'w')
+
+
+  new_friends.write(friends_base.read())
+  new_friends.close()
+  new_friends = open(new_friends.name, 'r+')
+  new_friends.read()
+
+
+  //We read from the base file and used the return value as the argument to write for our new file.
+  //We closed the new file.
+  //We reopened the new file, using the r+ mode which will allow us to read and write content to the file.
+  //We read the content from the new file to ensure that it wrote properly.
+  //In case nothing written seek to 0 and try again
+
+  >>> new_friends.seek(0)
+  >>> new_friends.write("Harman\n")
+  6
+  >>> new_friends.write("Indra\n")
+  8
+  >>> new_friends.seek(0)
+  0
+  >>> new_friends.read()
+  'Beast\nPhoenix\ne\nCyclops\nBishop\nNightcrawler\n'
+
+  //File might have corrupted, due to incorrect read
+
+
+
+  //Appending to a File
+
+  //method 1.Give enter once done
+  >>> friends_file.close()
+  >>> with open('friends_base.txt', 'a') as f:
+  ...     f.write('harman\n')
+  ...
+  //method 2.Enter once done
+  >>> f = open('friends_base.txt', 'a')
+  >>> with f:
+  ...     f.write("Indra\n")
+  ...
+
+  >>> exit()
+
+  $ cat friends_base.txt
+  Anand
+  Bala
+  Chandra
+  David
+  Edwin
+  Farooq
+  Gowtham
+  harman
+  Indra
