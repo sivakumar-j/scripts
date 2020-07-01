@@ -8,16 +8,16 @@ new_friends.write(friends_base.read())
 new_friends.write("Harman\n")
 
 
+//Iteration
 
-//Iteration-1
 for line in friends_file:
 	print(line, end="")
 
-//Iteration-2
+//Appending-method-1
 with open('friends_base.txt', 'a') as f:
 	f.write('harman\n')
 
-//Iteration-3
+//Appending-method-2
 f = open('friends_base.txt', 'a')
 	with f:
 	f.write("Indra\n")
