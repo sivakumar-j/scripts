@@ -8,7 +8,6 @@ new_friends.write(friends_base.read())
 new_friends.write("Harman\n")
 
 
-//Iterations
 
 //Iteration-1
 for line in friends_file:
