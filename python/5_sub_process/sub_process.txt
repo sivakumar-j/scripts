@@ -1,0 +1,52 @@
+//Summary
+import subprocess
+proc = subprocess.run(['ls', '-l']) //Shows list of file.But can't store the output
+So use, proc = subprocess.run(['ls', '-l'],stdout=subprocess.PIPE, stderr=subprocess.PIPE, ... )
+But it has a b prefix in output since its a byte
+proc,proc.stdout
+To get as string use print(proc.stdout.decode())
+//
+
+
+>>> import subprocess
+>>> proc = subprocess.run(['ls', '-l'])
+total 20
+drwxrwxr-x. 2 user user  54 Jan 28 15:36 bin
+drwxr-xr-x. 2 user user   6 Jan  7  2015 Desktop
+-rw-rw-r--. 1 user user  44 Jan 26 22:16 new_xmen.txt
+>>> proc
+CompletedProcess(args=['ls', '-l'], returncode=0)
+
+
+
+>>> proc = subprocess.run(
+...     ['ls', '-l'],
+...     stdout=subprocess.PIPE,
+...     stderr=subprocess.PIPE,
+... )
+>>> proc
+CompletedProcess(args=['ls', '-l'], returncode=0, stdout=b'total 20\ndrwxrwxr-x. 2 user user  54 Jan 28 15:36 bin\ndrwxr-xr-x. 2 user user   6 Jan  7  2015 Desktop\n-rw-rw-r--. 1 user user  44 Jan 26 22:16 new_xmen.txt\n-rw-rw-r--. 1 user user  98 Jan 26 21:39 read_file.py\n-rw-rw-r--. 1 user user 431 Aug  6  2015 VNCHOWTO\n-rw-rw-r--. 1 user user  61 Jan 28 14:11 xmen_base.txt\n-rw-------. 1 user user  68 Mar 18  2016 xrdp-chansrv.log\n', stderr=b'')
+>>> proc.stdout
+b'total 20\ndrwxrwxr-x. 2 user user  54 Jan 28 15:36 bin\ndrwxr-xr-x. 2 user user   6 Jan  7  2015 Desktop\n-rw-rw-r--. 1 user user  44 Jan 26 22:16 new_xmen
+
+
+print(proc.stdout)
+b'total 20\ndrwxrwxr-x. 2 user user  54 Jan 28 15:36 bin\ndrwxr-xr-x. 2 user user   6 Jan  7  2015 Desktop\n-rw-rw-r--. 1 user user  44 Jan 26 22:16 new_xmen.txt\n-rw-rw-r--. 1 user user  98 Jan 26 21:39 read_file.py\n-rw-rw-r--. 1 user user 431 Aug  6  2015 VNCHOWTO\n-rw-rw-r--. 1 user user  61 Jan 28 14:11 xmen_base.txt\n-rw-------. 1 user user  68 Mar 18  2016 xrdp-chansrv.log\n'
+>>> print(proc.stdout.decode())
+
+
+>>> new_proc = subprocess.run(['cat', 'fake.txt'])
+cat: fake.txt: No such file or directory
+>>> new_proc
+CompletedProcess(args=['cat', 'fake.txt'], returncode=1)
+
+
+
+>>> error_proc = subprocess.run(['cat', 'fake.txt'], check=True)
+cat: fake.txt: No such file or directory
+Traceback (most recent call last):
+  File "", line 1, in 
+  File "/usr/local/lib/python3.6/subprocess.py", line 418, in run
+    output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['cat', 'fake.txt']' returned non-zero exit status 1.
+>>>
