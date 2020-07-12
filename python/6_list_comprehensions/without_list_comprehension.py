@@ -15,7 +15,7 @@ with open('/usr/share/dict/words') as f: ## words is a package in centos
   words = f.readlines()
 
 
-matches = []
+matches = [] 
 
 
 for word in words:
