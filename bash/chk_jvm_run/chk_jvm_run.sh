@@ -18,7 +18,7 @@ do
 		if ! pgrep -f "appname${i, ,}_server${v_server}" > /dev/null
 		then
 			v_send_mail_p=1
-			v_mail_content="${v_mail_content}appname${i}_server${v_server} In"
+			v_mail_content="${v_mail_content}appname${i}_server${v_server} \n"
 		fi
 
 	elif [ $v_alert_when_running = "Y" ]; #checks when running
@@ -27,7 +27,7 @@ do
 		if pgrep -f "appname${i, ,}_server${v_server)" > /dev/null
 		then
 			v_send_mail p=1
-			v_mail_content="${v_mail_content}appname${i}_server${v_server}In"
+			v_mail_content="${v_mail_content}appname${i}_server${v_server}\n"
 		fi
          fi
 done
