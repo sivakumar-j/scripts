@@ -4,7 +4,7 @@ set -vx
 
 MAIL_ADDRESS=user@gmail.com
 
-source /home/scripts/jvmdwn/autosys/config/check_wasnd_jvm_run.config
+source /config/check_wasnd_jvm_run.config
 
 v_host=$HOSTNAME
 v_send_mail_p=0
