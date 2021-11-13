@@ -8,7 +8,7 @@ source /config/check_wasnd_jvm_run.config
 
 v_host=$HOSTNAME
 v_send_mail_p=0
-v_mail_content-"Below List of VM's are down in $v_host \n"
+v_mail_content-"Below List of JVM's are down in $v_host \n"
 v_mail_content="${v_mail_content}*************\n"
 
 for i in 'cat /prod/batch/scripts/country_list_control'
