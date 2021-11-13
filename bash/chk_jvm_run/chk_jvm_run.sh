@@ -29,7 +29,7 @@ do
 			v_send_mail p=1
 			v_mail_content="${v_mail_content}appname${i}_server${v_server}In"
 		fi
-fi
+         fi
 done
 
 MAIL SUBJECT="List of JVM's down in server ${v_host}"
